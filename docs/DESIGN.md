@@ -265,19 +265,21 @@ Les maquettes haute fidélité et le prototype cliquable sont produits avec **Cl
 
 > Lien du prototype : à renseigner
 
-Le prototype couvre dix écrans, chacun déclinable en plusieurs états atteignables sans modifier le code, en deux formats : desktop 1280 px et mobile 390 px.
+Le prototype couvre douze écrans, chacun déclinable en plusieurs états atteignables sans modifier le code, en deux formats : desktop 1280 px et mobile 390 px.
 
 | Écran                        | États couverts                                                                                      |
 | ---------------------------- | --------------------------------------------------------------------------------------------------- |
 | Accueil                      | nominal connecté, visiteur, liste vide, erreur de chargement, sans vitrine tournoi                  |
 | Détail d'un créneau          | non inscrit, déjà inscrit, complet, annulé, réinscription                                           |
 | Page équipe                  | capitaine, membre, équipe complète                                                                  |
-| Création d'un créneau        | nominal, erreurs de validation, chevauchement, super organisateur                                   |
+| Création et modification d'un créneau | nominal, erreurs de validation, chevauchement, édition, capacité insuffisante, super organisateur |
 | Tableau de bord organisateur | nominal, aucun inscrit, créneau annulé                                                              |
-| Authentification             | connexion, inscription, erreur, compte non vérifié, blocage rate limit                              |
+| Authentification | connexion, inscription, erreur de connexion, compte non vérifié, blocage rate limit, mot de passe oublié, nouveau mot de passe |
 | Centres                      | visiteur, non affilié, demande en attente, affilié, demande refusée                                 |
 | Console admin, comptes       | nominal, recherche sans résultat, retrait du dernier rôle, compte suspendu, auto-suspension bloquée |
 | Console admin, centres       | nominal, sans rôle organisateur, affectation existante, centre inactif, centre orphelin             |
 | Console admin, vitrine       | une fiche en vitrine, aucune fiche, erreurs de validation, vitrine désactivée                       |
+| Mon profil | nominal, sans photo, format refusé, fichier trop lourd, service d'images indisponible |
+| Équipes, création et adhésion | sans équipe, création, sans affiliation, nom déjà pris, demande envoyée, équipe complète |
 
-Les wireframes qui ont servi de base sont versionnés dans `diagrams/wireframes/`. Le benchmark visuel et le moodboard qui ont orienté ces choix sont documentés dans `benchmark.md` et `moodboard.md`.
+Les wireframes qui ont servi de base sont versionnés dans `diagrams/wireframes/`, aux côtés des rendus des douze écrans exportés depuis le kit (`maquette-*-desktop.png` et `maquette-*-mobile.png`). Le benchmark visuel et le moodboard qui ont orienté ces choix sont documentés dans `benchmark.md` et `moodboard.md`.
