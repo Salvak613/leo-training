@@ -88,7 +88,8 @@ L'application côté serveur est strictement divisée en **4 couches successives
 | **ORM**                | Prisma            | Génère un client de base de données 100% typé à partir du schéma. Protection native contre les injections SQL et gestion fluide des migrations.                                |
 | **SGBD**               | PostgreSQL        | Base relationnelle robuste et open-source, adaptée aux relations fortes du modèle de données (Joueurs, Équipes, Créneaux, Inscriptions).                                       |
 | **Framework Frontend** | React             | SPA totalement découplée du backend. Le typage TypeScript partagé entre front et back garantit la cohérence des contrats de données.                                           |
-| **Emails**             | Nodemailer        | Librairie standard Node.js pour les e-mails transactionnels (confirmation de compte, mot de passe oublié) via Brevo (SMTP).                                                    |
+| **Outil de build**     | Vite              | Serveur de développement instantané et build de production optimisé (découpage du bundle, compression), en cohérence avec l'objectif de sobriété.                              |
+| **Emails**             | Nodemailer        | Librairie standard Node.js pour les e-mails transactionnels via Brevo (SMTP) : confirmation de compte, réinitialisation de mot de passe, et notification des joueurs inscrits lors de l'annulation d'un créneau. |
 | **Stockage médias**    | Cloudinary        | Service cloud de gestion d'images. Utilisé pour l'upload des photos de profil et des logos d'équipe. Le backend reçoit le fichier, l'envoie à Cloudinary et stocke l'URL retournée en base. |
 | **Backend hosting**    | Render            | PaaS géré : déploiement depuis GitHub, HTTPS automatique, scalabilité sans configuration serveur.                                                                              |
 | **Base de données**    | AlwaysData        | Hébergement PostgreSQL managé. Gestion des sauvegardes et de la disponibilité déléguée à la plateforme.                                                                        |
@@ -102,6 +103,8 @@ L'architecture de Leo Training repose sur un **découplage strict** :
 - Le **Frontend** (React) se comporte comme une SPA totalement autonome.
 - Le **Backend** (Node/Express) est une API REST _headless_ qui ne génère aucun fichier HTML.
 - Les deux briques communiquent exclusivement via **HTTPS**, en s'échangeant des données au format **JSON**.
-- Le HTTPS et le routage sont délégués aux plateformes d'hébergement (Render / AlwaysData) — aucun reverse proxy à gérer manuellement.
+- Le HTTPS, la terminaison TLS et le routage sont assurés par le reverse proxy géré des plateformes d'hébergement (Render et AlwaysData). Il figure comme nœud sur le diagramme de déploiement, mais aucune configuration manuelle n'est à notre charge.
+
+Le diagramme `diagrams/deployment.png` est, en Phase 1, une **vue logique** : les nœuds (client, frontend, API, base de données, services tiers), les artefacts déployés sur chacun et les protocoles d'échange (HTTPS et JSON, SQL, SMTP, HTTPS vers Cloudinary). Il sera enrichi en Phase 2 des détails physiques, machine d'hébergement, conteneurs, volumes et certificats.
 
 Ce découplage garantit que l'API pourra, à l'avenir, être consommée par d'autres clients (application mobile iOS/Android) sans modifier une seule ligne de code côté serveur.
