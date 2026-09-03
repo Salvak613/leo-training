@@ -88,7 +88,8 @@ L'application côté serveur est strictement divisée en **4 couches successives
 | **ORM**                | Prisma            | Génère un client de base de données 100% typé à partir du schéma. Protection native contre les injections SQL et gestion fluide des migrations.                                |
 | **SGBD**               | PostgreSQL        | Base relationnelle robuste et open-source, adaptée aux relations fortes du modèle de données (Joueurs, Équipes, Créneaux, Inscriptions).                                       |
 | **Framework Frontend** | React             | SPA totalement découplée du backend. Le typage TypeScript partagé entre front et back garantit la cohérence des contrats de données.                                           |
-| **Emails**             | Nodemailer        | Librairie standard Node.js pour les e-mails transactionnels (confirmation de compte, mot de passe oublié) via un service SMTP externe (Brevo ou SendGrid).                     |
+| **Emails**             | Nodemailer        | Librairie standard Node.js pour les e-mails transactionnels (confirmation de compte, mot de passe oublié) via Brevo (SMTP).                                                    |
+| **Stockage médias**    | Cloudinary        | Service cloud de gestion d'images. Utilisé pour l'upload des photos de profil et des logos d'équipe. Le backend reçoit le fichier, l'envoie à Cloudinary et stocke l'URL retournée en base. |
 | **Backend hosting**    | Render            | PaaS géré : déploiement depuis GitHub, HTTPS automatique, scalabilité sans configuration serveur.                                                                              |
 | **Base de données**    | AlwaysData        | Hébergement PostgreSQL managé. Gestion des sauvegardes et de la disponibilité déléguée à la plateforme.                                                                        |
 
@@ -99,7 +100,7 @@ L'application côté serveur est strictement divisée en **4 couches successives
 L'architecture de Leo Training repose sur un **découplage strict** :
 
 - Le **Frontend** (React) se comporte comme une SPA totalement autonome.
-- Le **Backend** (Node/Express) est une API REST *headless* qui ne génère aucun fichier HTML.
+- Le **Backend** (Node/Express) est une API REST _headless_ qui ne génère aucun fichier HTML.
 - Les deux briques communiquent exclusivement via **HTTPS**, en s'échangeant des données au format **JSON**.
 - Le HTTPS et le routage sont délégués aux plateformes d'hébergement (Render / AlwaysData) — aucun reverse proxy à gérer manuellement.
 
