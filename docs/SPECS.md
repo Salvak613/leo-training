@@ -621,6 +621,7 @@ Fonctionnalité: Modification d'un créneau
     Quand je modifie ses horaires, sa description ou son tarif
     Alors les modifications sont enregistrées
     Et les inscriptions déjà confirmées sont conservées
+    Et les joueurs inscrits sont prévenus par email de ce qui a changé
 
   Scénario: Capacité inférieure aux inscriptions confirmées
     Etant donné qu'un créneau compte douze inscriptions confirmées
