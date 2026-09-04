@@ -544,6 +544,7 @@ Le cas d'utilisation se termine.
 3. Le système affiche le formulaire pré-rempli et rappelle le nombre de joueurs déjà inscrits.
 4. L'acteur modifie la date, les horaires, la capacité, la visibilité, le tarif ou la description.
 5. Le système valide et enregistre les modifications. Les inscriptions confirmées sont conservées.
+6. Le système notifie par email les joueurs dont l'inscription est `CONFIRMED`, en indiquant ce qui a changé.
 
 Le cas d'utilisation se termine.
 
@@ -552,6 +553,7 @@ Le cas d'utilisation se termine.
 - Alt 1 : la nouvelle capacité est inférieure au nombre d'inscriptions `CONFIRMED`, le système rejette et indique ce nombre.
 - Alt 2 : le centre hôte n'est pas modifiable après publication, le champ est verrouillé.
 - Alt 3 : le créneau est annulé ou terminé, la modification est impossible.
+- Alt 4 : l'envoi des emails échoue, la modification reste enregistrée et l'échec est journalisé pour reprise.
 
 ---
 
