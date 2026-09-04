@@ -167,6 +167,7 @@ Chaque US renvoie à son numéro dans `SPECS.md`, où figurent l'énoncé comple
 ### US24, Modification d'un créneau publié
 
 - [ ] Endpoint de modification, refus si la capacité descend sous les inscriptions confirmées
+- [ ] Notification par email des joueurs confirmés
 - [ ] Formulaire de modification, centre hôte verrouillé
 
 ---
