@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Leo Training, point d'étape</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F05A28; --orange-dark: #C44A1E; --orange-light: #FEF0EA; --navy: #253746;
+    --title: #111827; --body: #374151; --meta: #6B7280; --border: #E5E7EB; --page: #F9FAFB; --card: #FFFFFF;
+    --font: "Inter", -apple-system, "Segoe UI", sans-serif;
+  }
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #EEF0F3; font-family: var(--font); color: var(--body); }
+  .slide { width: 1920px; height: 1080px; box-sizing: border-box; background: var(--card); position: relative; overflow: hidden; page-break-after: always; break-after: page; padding: 72px 96px 64px; display: flex; flex-direction: column; }
+  @media screen { .slide { margin: 24px auto; box-shadow: 0 10px 25px rgba(0,0,0,.12); } }
+  .bar { position: absolute; left: 0; top: 0; width: 14px; height: 100%; background: var(--orange); }
+  .num { position: absolute; right: 96px; bottom: 44px; font: 500 20px/1 var(--font); color: var(--meta); }
+  .brand { position: absolute; left: 96px; bottom: 40px; display: flex; align-items: center; gap: 12px; font: 500 18px/1 var(--font); color: var(--meta); }
+  .brand img { height: 28px; }
+  .kicker { font: 600 20px/1 var(--font); letter-spacing: .12em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 18px; }
+  h1 { font: 700 64px/1.1 var(--font); color: var(--title); margin: 0 0 12px; letter-spacing: -.01em; }
+  h2 { font: 700 54px/1.15 var(--font); color: var(--title); margin: 0 0 40px; letter-spacing: -.01em; }
+  .lead { font: 400 30px/1.45 var(--font); color: var(--body); max-width: 1100px; }
+  .cols { display: grid; gap: 64px; flex: 1; align-items: center; }
+  .list { display: grid; gap: 22px; }
+  .item { display: flex; gap: 22px; align-items: flex-start; font: 400 30px/1.35 var(--font); color: var(--body); }
+  .item b { color: var(--title); font-weight: 600; }
+  .dot { flex: 0 0 auto; width: 14px; height: 14px; border-radius: 50%; background: var(--orange); margin-top: 14px; }
+  .fig { display: flex; align-items: center; justify-content: center; }
+  .fig img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .frame { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--page); }
+  .chips { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 44px; }
+  .chip { padding: 14px 24px; border-radius: 9999px; background: var(--orange-light); color: var(--orange-dark); font: 600 24px/1 var(--font); }
+  .quote { border-left: 6px solid var(--orange); padding: 8px 0 8px 32px; font: 500 32px/1.45 var(--font); color: var(--title); max-width: 1300px; margin-top: 48px; }
+  .quote small { display: block; font: 400 22px/1.4 var(--font); color: var(--meta); margin-top: 10px; }
+  .strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; flex: 1; align-items: center; }
+  .step { display: flex; flex-direction: column; gap: 18px; }
+  .step .frame { flex: 0 0 auto; display: flex; align-items: flex-start; justify-content: center; padding: 0; }
+  .step .cap { font: 600 26px/1.3 var(--font); color: var(--title); }
+  .step .cap span { display: block; font: 400 21px/1.4 var(--font); color: var(--meta); margin-top: 4px; }
+  .arrow { position: absolute; top: 50%; font-size: 40px; color: var(--orange); }
+  .rule { background: var(--page); border: 1px solid var(--border); border-radius: 14px; padding: 28px 32px; }
+  .rule .t { font: 600 26px/1.3 var(--font); color: var(--title); margin-bottom: 8px; }
+  .rule .d { font: 400 23px/1.45 var(--font); color: var(--body); }
+  .table { width: 100%; border-collapse: collapse; font: 400 26px/1.4 var(--font); }
+  .table td { padding: 14px 0; border-top: 1px solid var(--border); vertical-align: top; }
+  .table td:first-child { width: 72%; padding-right: 32px; color: var(--title); font-weight: 500; }
+  .table td:last-child { color: var(--meta); }
+  .done { color: #15803D; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- 1. Le projet -->
+<section class="slide">
+  <div class="bar"></div>
+  <img src="../Logo.png" alt="Leo Training" style="height:130px; width:auto; align-self:flex-start; margin-bottom:40px;">
+  <div class="kicker">Projet chef d'oeuvre, phase 1, point d'étape</div>
+  <h1>Leo Training</h1>
+  <p class="lead">Le hub des entraînements de la ligue LEO. Les centres publient leurs créneaux, les joueurs s'inscrivent en un clic, les places se mettent à jour en continu.</p>
+  <div class="chips">
+    <span class="chip">1 000 joueurs compétitifs</span>
+    <span class="chip">Aujourd'hui : des Discord dispersés</span>
+    <span class="chip">Un seul objet : le créneau</span>
+  </div>
+  <div class="quote">
+    Quand je cherche où m'entraîner et que l'information est éparpillée sur les Discord de plusieurs centres, je veux voir au même endroit les créneaux ouverts et les places restantes, pour réserver ma place en une minute sans relancer personne.
+    <small>Formulation Jobs To Be Done, côté joueur</small>
+  </div>
+  <div class="num">1 / 7</div>
+</section>
+
+<!-- 2. Architecture -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Étape B</div>
+  <h2>Architecture</h2>
+  <div class="cols" style="grid-template-columns: 1fr 1.05fr;">
+    <div class="list">
+      <div class="item"><span class="dot"></span><span><b>Multicouche classique.</b> Routes, services, repositories, base. Testable et lisible pour une V1.</span></div>
+      <div class="item"><span class="dot"></span><span><b>Front et back découplés.</b> SPA React avec Vite, API REST Node et Express, JSON sur HTTPS.</span></div>
+      <div class="item"><span class="dot"></span><span><b>TypeScript de bout en bout.</b> Prisma et PostgreSQL, un contrat de données partagé.</span></div>
+      <div class="item"><span class="dot"></span><span><b>Sécurité.</b> Zod à l'entrée, Helmet, rate limit, JWT court et refresh token HttpOnly, bcrypt.</span></div>
+      <div class="item"><span class="dot"></span><span><b>Sobriété.</b> Pagination par défaut, payloads limités, pas de polling.</span></div>
+    </div>
+    <div class="fig frame" style="padding:24px; height:780px;"><img src="../diagrams/deployment.png" alt="Diagramme de déploiement"></div>
+  </div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">2 / 7</div>
+</section>
+
+<!-- 3. Données -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Étape C</div>
+  <h2>Modèle de données</h2>
+  <div class="cols" style="grid-template-columns: 1.25fr 1fr;">
+    <div class="fig frame" style="padding:24px; height:800px;"><img src="../diagrams/mcd.png" alt="Modèle conceptuel de données"></div>
+    <div class="list" style="gap:28px;">
+      <div class="rule">
+        <div class="t">La capacité se compte sur les seules inscriptions confirmées</div>
+        <div class="d">Dans une transaction avec verrou sur le créneau. Se désinscrire change un statut, ne supprime rien.</div>
+      </div>
+      <div class="rule">
+        <div class="t">L'équipe d'un inscrit est dérivée, jamais stockée</div>
+        <div class="d">Elle vient de son appartenance active. Aucune colonne en plus, aucune divergence entre les écrans.</div>
+      </div>
+      <div class="rule">
+        <div class="t">MCD, MLD, MPD avec le DDL PostgreSQL complet</div>
+        <div class="d">Seize tables, onze types énumérés, index uniques partiels pour le capitaine, l'équipe active et la vitrine.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">3 / 7</div>
+</section>
+
+<!-- 4. Moodboard -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Étape C, design</div>
+  <h2>Charte graphique</h2>
+  <div class="fig frame" style="flex:1; padding:0;"><img src="../diagrams/moodboard.png" alt="Moodboard"></div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">4 / 7</div>
+</section>
+
+<!-- 5. Du wireframe à l'écran -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Étape C, design</div>
+  <h2>Du zoning à l'écran final</h2>
+  <div class="strip">
+    <div class="step">
+      <div class="frame"><img src="../diagrams/wireframes/wireframe-accueil.png" alt="Wireframe" style="width:100%; height:auto; display:block;"></div>
+      <div class="cap">Zoning et wireframes<span>Au crayon, desktop et mobile</span></div>
+    </div>
+    <div class="step">
+      <div class="frame"><img src="../diagrams/wireframes/wireframe-reel-accueil.png" alt="Maquette Figma" style="width:100%; height:auto; display:block;"></div>
+      <div class="cap">Maquettes Figma<span>Deux écrans, la charte est fixée</span></div>
+    </div>
+    <div class="step">
+      <div class="frame"><img src="../diagrams/wireframes/maquette-01-accueil-desktop.png" alt="Écran final" style="width:100%; height:auto; display:block;"></div>
+      <div class="cap">Douze écrans, Claude Design<span>Spécifié, contraint par DESIGN.md, audité</span></div>
+    </div>
+  </div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">5 / 7</div>
+</section>
+
+<!-- 6. Démo -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Étape C, prototype</div>
+  <h2>Accueil, desktop et mobile</h2>
+  <div class="cols" style="grid-template-columns: 1fr auto; gap: 56px; align-items: start;">
+    <div class="frame"><img src="../diagrams/wireframes/maquette-01-accueil-desktop.png" alt="Accueil desktop" style="width:100%; display:block;"></div>
+    <div class="frame" style="height:800px; width:284px;"><img src="../diagrams/wireframes/maquette-01-accueil-mobile.png" alt="Accueil mobile" style="width:100%; display:block;"></div>
+  </div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">6 / 7</div>
+</section>
+
+<!-- 7. Ce qui reste -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Suite</div>
+  <h2>Où j'en suis, ce qui reste</h2>
+  <div class="cols" style="grid-template-columns: 1.15fr 1fr; align-items: start;">
+    <table class="table">
+      <tr><td>PRD, spécifications Gherkin, architecture</td><td class="done">fait</td></tr>
+      <tr><td>MCD, MLD, MPD et DDL</td><td class="done">fait</td></tr>
+      <tr><td>Charte, design system, douze écrans</td><td class="done">fait</td></tr>
+      <tr><td>Recherche JTBD, trois sources</td><td>étape A</td></tr>
+      <tr><td>Export PNG des diagrammes restants</td><td>étape B et C</td></tr>
+      <tr><td>Pitch de dix minutes et retours des pairs</td><td>étape D</td></tr>
+    </table>
+    <div class="list" style="gap:28px;">
+      <div class="rule">
+        <div class="t">Question 1</div>
+        <div class="d">Le prototype est réalisé avec Claude Design à partir de mes maquettes Figma. Est-ce recevable au regard de la grille ?</div>
+      </div>
+      <div class="rule">
+        <div class="t">Question 2</div>
+        <div class="d">Le périmètre en trois niveaux, fonctionnalité principale, socle, lot V1.1, est-ce la bonne lecture de « une seule fonctionnalité forte » ?</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
+  <div class="num">7 / 7</div>
+</section>
+
+</body>
+</html>
