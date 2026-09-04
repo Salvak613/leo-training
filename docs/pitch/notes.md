@@ -20,6 +20,14 @@ J'ai choisi une architecture multicouche classique, routes, services, accès aux
 
 Côté sécurité, Zod valide toutes les entrées, Helmet protège les en-têtes, un rate limit protège la connexion, l'authentification repose sur un JWT court et un refresh token en cookie HttpOnly, et les mots de passe sont hachés avec bcrypt. Côté sobriété, pagination par défaut et pas de polling. Le diagramme montre les briques : le client, l'API hébergée sur Render, la base sur AlwaysData, et deux services tiers, Brevo pour les emails et Cloudinary pour les images.
 
+Si on me demande à quoi sert chaque brique :
+
+- **Zod à l'entrée.** Chaque requête qui arrive dans l'API est vérifiée avant d'être traitée : les champs attendus sont là, avec le bon type et la bonne taille. Une capacité négative ou une date mal formée est rejetée dès le contrôleur, elle n'atteint jamais la logique métier ni la base.
+- **Helmet.** Un middleware qui règle les en-têtes HTTP de sécurité que le navigateur respecte : il empêche par exemple d'afficher le site dans une page tierce, limite les scripts autorisés et cache la technologie utilisée par le serveur.
+- **Rate limit.** Une limite du nombre de requêtes par adresse IP sur une période donnée, surtout sur la connexion. Ça bloque les tentatives de mot de passe en boucle et protège le serveur contre un afflux de requêtes.
+- **JWT court et refresh token.** Après connexion, l'utilisateur reçoit un jeton d'accès valable une quinzaine de minutes, envoyé avec chaque requête. S'il est volé, il expire vite. Pour ne pas redemander le mot de passe toutes les quinze minutes, un second jeton, valable sept jours, est stocké dans un cookie HttpOnly, donc inaccessible au JavaScript, et sert uniquement à renouveler le premier.
+- **bcrypt.** Les mots de passe ne sont jamais stockés en clair. bcrypt en calcule une empreinte salée, lente à calculer exprès, ce qui rend inutile une fuite de la base et très coûteuse une attaque par essais successifs.
+
 ## 5. MCD et MPD, 1 min
 
 J'ai suivi la méthode Merise. À gauche le modèle conceptuel, la vue métier : les objets du projet, utilisateur, centre, équipe, entraînement, tournoi, et les liens entre eux avec leurs cardinalités. À droite le modèle physique, la traduction pour PostgreSQL : seize tables avec leurs colonnes typées, leurs clés et leurs contraintes. Le script SQL complet est dans le dépôt. Un choix à retenir : le nombre de places restantes ne se stocke pas, il se calcule à partir des inscriptions confirmées, pour ne jamais avoir deux vérités en base.
