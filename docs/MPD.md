@@ -4,6 +4,8 @@
 > `TIMESTAMPTZ`, `updated_at` géré par Prisma (`@updatedAt`). Nommage anglais (convention du
 > code) ; la correspondance avec le MLD français est donnée en fin de document.
 
+> Diagramme : `diagrams/mpd.png`, généré à partir des tables décrites ci-dessous.
+
 ## Décisions de passage MLD → MPD
 
 | #   | Décision                                                                                | Justification                                                                                                    |
