@@ -410,7 +410,8 @@ Le cas d'utilisation se termine.
 **Extensions**
 
 - Alt 1 : utilisateur introuvable, le système affiche une absence de résultat.
-- Alt 2 : tentative de retrait du rôle `PLAYER`, socle de tout compte, le système rejette et propose la suspension si l'accès doit être coupé (UC20).
+- Alt 2 : tentative de retrait du rôle `PLAYER` sur un compte joueur, le système rejette : c'est le rôle socle de tout compte non administrateur. Pour couper l'accès, passer par la suspension (UC20).
+- Alt 3 : le rôle `ADMIN` ne s'attribue pas depuis la console. Un compte administrateur est un compte dédié, distinct du compte joueur de la même personne, créé à l'initialisation de la plateforme ou par un administrateur existant. Il porte le seul rôle `ADMIN`, ne s'inscrit à aucun créneau et n'appartient à aucune équipe.
 
 ---
 
