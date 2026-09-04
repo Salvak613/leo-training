@@ -14,7 +14,15 @@ Multicouche classique, pas hexagonal, trop lourd pour une V1. Front et back déc
 
 ## 3. Données, 1 min 15
 
-Je ne lis pas le MCD. Un joueur s'affilie à des centres, une équipe représente un centre, un centre accueille des créneaux, un joueur s'inscrit à des créneaux. Deux règles font la valeur du modèle. La capacité est comptée sur les seules inscriptions confirmées, dans une transaction avec verrou sur le créneau : deux inscriptions simultanées ne peuvent pas dépasser la capacité. L'équipe d'un inscrit n'est pas stockée, elle est dérivée de son appartenance active, donc aucune divergence possible entre les écrans. À droite le MPD : seize tables PostgreSQL, les clés étrangères en orange, les types énumérés pour les statuts. Le DDL complet est dans le dépôt.
+Pour la base de données j'ai suivi la méthode Merise, en trois niveaux.
+
+À gauche le MCD, le modèle conceptuel. C'est la vue métier, indépendante de toute technologie. On y retrouve les objets du projet, l'utilisateur, le centre, l'équipe, l'entraînement et le tournoi en vitrine, avec les liens entre eux et leurs cardinalités : un centre accueille plusieurs entraînements, un joueur s'inscrit à plusieurs entraînements, une équipe représente un centre. Les règles qui ne se dessinent pas sont notées à côté sous forme de contraintes d'intégrité.
+
+Entre les deux, le MLD traduit ces entités en tables relationnelles avec les clés étrangères. Je ne l'affiche pas ici, il est dans le dépôt.
+
+À droite le MPD, le modèle physique. C'est la traduction concrète pour PostgreSQL : chaque table avec ses colonnes typées, ses clés primaires et étrangères, ses contraintes. J'ai fait quelques choix à ce passage, des identifiants UUID plutôt que des clés naturelles, et des types énumérés pour tous les statuts. Le script SQL de création complet est dans le dépôt.
+
+Une règle à retenir si on ne devait en garder qu'une : le nombre de places restantes ne se stocke pas, il se calcule à partir des inscriptions confirmées, ce qui évite d'avoir deux vérités en base.
 
 ## 4. Charte graphique, 45 s
 
