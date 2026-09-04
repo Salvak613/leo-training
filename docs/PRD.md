@@ -36,7 +36,7 @@ Une niche très qualifiée : environ **1 000 joueurs compétitifs en France**, m
 
 **Le Joueur (et capitaine d'équipe).** Membre actif du circuit compétitif. Il cherche à trouver rapidement une session disponible et à s'y inscrire, ou à coordonner la présence de son équipe.
 
-Un quatrième acteur, l'**Administrateur de la ligue**, existe dans le système (attribution des rôles, rattachement des organisateurs aux centres, vitrine tournoi). Ce n'est pas une cible commerciale mais un rôle interne, décrit dans `SPECS.md` et `USE-CASES.md`.
+Un quatrième acteur, l'**Administrateur de la ligue**, existe dans le système (attribution des rôles, rattachement des organisateurs aux centres, vitrine tournoi). Ce n'est pas une cible commerciale mais un rôle interne, porté par un compte dédié distinct du compte joueur de la même personne, décrit dans `SPECS.md` et `USE-CASES.md`.
 
 ---
 

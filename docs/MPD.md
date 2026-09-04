@@ -131,6 +131,8 @@
 
 Cardinalité (1,n) du MCD — au moins un rôle — garantie applicativement à la création du compte.
 
+Invariant applicatif : `ADMIN` est exclusif. Un compte porte soit `ADMIN` seul, soit `PLAYER`, accompagné le cas échéant de `ORGANIZER` et `SUPER_ORGANIZER`. Une personne qui administre la ligue et joue possède deux comptes, avec deux adresses email. Séparation des privilèges : la session utilisée au quotidien ne porte jamais les droits d'administration.
+
 ### `center_managers` — MLD : GERER
 
 | Colonne     | Type | Contraintes                                         |

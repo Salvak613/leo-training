@@ -499,8 +499,14 @@ Fonctionnalité: Gestion des rôles
 
   Scénario: Le rôle joueur ne peut pas être retiré
     Etant donné que je suis un administrateur authentifié
-    Quand je tente de retirer le rôle joueur à un utilisateur
-    Alors le système refuse, ce rôle étant le socle de tout compte
+    Quand je tente de retirer le rôle joueur à un compte joueur
+    Alors le système refuse, ce rôle étant le socle de tout compte non administrateur
+
+  Scénario: Un compte administrateur est un compte dédié
+    Etant donné qu'une personne administre la ligue et joue dans une équipe
+    Alors elle dispose de deux comptes distincts
+    Et le compte administrateur porte le seul rôle administrateur
+    Et il ne peut ni s'inscrire à un créneau ni appartenir à une équipe
 
   Scénario: Recherche sans résultat
     Etant donné que je suis un administrateur authentifié
