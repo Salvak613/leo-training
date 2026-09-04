@@ -1,41 +1,49 @@
 # Notes d'orateur, point d'étape de 6 minutes
 
-Une slide par minute. Si je dépasse à la fin de la slide 3, je saute la slide 5 et je raccourcis la 4.
+Dix slides, dans l'ordre du support Google Slides. Les temps sont indicatifs. Si je dépasse à la slide 5, je passe la 6 et la 8 en dix secondes chacune.
 
-## 1. Le projet, 45 s
+## 1. Titre, 10 s
 
-Leo Training est un hub pour les entraînements de laser-tag compétitif. La ligue LEO, environ mille joueurs, et les centres Megazone qui les accueillent. Aujourd'hui tout s'organise sur des Discord dispersés, un par centre : aucune vue d'ensemble, les centres subissent leur remplissage. Un seul objet dans le produit, le créneau : le centre le publie, le joueur s'inscrit en un clic, les places se mettent à jour. Je lis la phrase JTBD.
+Leo Training, un hub pour les entraînements de laser-tag compétitif. Je vous présente où j'en suis sur la phase de conception.
 
-Une phrase de benchmark : personne ne couvre l'entraînement, ni le site de la ligue qui ne fait que les tournois, ni SportEasy qui gère une équipe, ni Playtomic qui vend des terrains.
+## 2. Qu'est-ce que LEO, 30 s
 
-## 2. Architecture, 1 min 15
+LEO, Laser Event Organization, c'est la ligue officielle du laser-tag compétitif en France. Elle organise les tournois, dont le championnat de France, avec le réseau des centres Megazone. Environ mille joueurs actifs.
 
-Multicouche classique, pas hexagonal, trop lourd pour une V1. Front et back découplés, SPA React et API REST Express, JSON sur HTTPS. TypeScript des deux côtés, Prisma et PostgreSQL. Sécurité : Zod valide chaque entrée dans les contrôleurs, Helmet pour les en-têtes, rate limit sur la connexion, JWT court plus refresh token en cookie HttpOnly, bcrypt pour les mots de passe. Sobriété : pagination par défaut, payloads limités, pas de polling. Le diagramme montre les noeuds, dont Brevo pour les emails et Cloudinary pour les images.
+## 3. Problématique, 45 s
 
-## 3. Données, 1 min 15
+La ligue organise les tournois, mais personne n'organise les entraînements. Chaque centre a son serveur Discord, l'information est éparpillée, on ne sait pas où et quand s'entraîner, et les centres subissent leur remplissage. Le besoin, c'est celui d'un joueur qui veut voir tous les créneaux au même endroit et réserver sa place en une minute. L'objectif de Leo Training tient en un mot : le créneau. Le centre le publie, le joueur s'inscrit, les places se mettent à jour.
 
-Pour la base de données j'ai suivi la méthode Merise, en trois niveaux.
+## 4. Architecture, 1 min
 
-À gauche le MCD, le modèle conceptuel. C'est la vue métier, indépendante de toute technologie. On y retrouve les objets du projet, l'utilisateur, le centre, l'équipe, l'entraînement et le tournoi en vitrine, avec les liens entre eux et leurs cardinalités : un centre accueille plusieurs entraînements, un joueur s'inscrit à plusieurs entraînements, une équipe représente un centre. Les règles qui ne se dessinent pas sont notées à côté sous forme de contraintes d'intégrité.
+J'ai choisi une architecture multicouche classique, routes, services, accès aux données, base. C'est simple à tester et suffisant pour une V1. Le front et le back sont découplés : une application React d'un côté, une API REST Node et Express de l'autre, qui parlent en JSON. TypeScript des deux côtés, avec Prisma et PostgreSQL.
 
-Entre les deux, le MLD traduit ces entités en tables relationnelles avec les clés étrangères. Je ne l'affiche pas ici, il est dans le dépôt.
+Côté sécurité, Zod valide toutes les entrées, Helmet protège les en-têtes, un rate limit protège la connexion, l'authentification repose sur un JWT court et un refresh token en cookie HttpOnly, et les mots de passe sont hachés avec bcrypt. Côté sobriété, pagination par défaut et pas de polling. Le diagramme montre les briques : le client, l'API hébergée sur Render, la base sur AlwaysData, et deux services tiers, Brevo pour les emails et Cloudinary pour les images.
 
-À droite le MPD, le modèle physique. C'est la traduction concrète pour PostgreSQL : chaque table avec ses colonnes typées, ses clés primaires et étrangères, ses contraintes. J'ai fait quelques choix à ce passage, des identifiants UUID plutôt que des clés naturelles, et des types énumérés pour tous les statuts. Le script SQL de création complet est dans le dépôt.
+## 5. MCD et MPD, 1 min
 
-Une règle à retenir si on ne devait en garder qu'une : le nombre de places restantes ne se stocke pas, il se calcule à partir des inscriptions confirmées, ce qui évite d'avoir deux vérités en base.
+J'ai suivi la méthode Merise. À gauche le modèle conceptuel, la vue métier : les objets du projet, utilisateur, centre, équipe, entraînement, tournoi, et les liens entre eux avec leurs cardinalités. À droite le modèle physique, la traduction pour PostgreSQL : seize tables avec leurs colonnes typées, leurs clés et leurs contraintes. Le script SQL complet est dans le dépôt. Un choix à retenir : le nombre de places restantes ne se stocke pas, il se calcule à partir des inscriptions confirmées, pour ne jamais avoir deux vérités en base.
 
-## 4. Charte graphique, 45 s
+## 6. Zoning et wireframes, 30 s
 
-Deux univers. La ligue est en bleu et blanc, son site ne gère que les tournois. Leo Training prend l'orange : séparation nette, et complémentarité, l'orange et le bleu sont complémentaires. Le navy du logo garde le lien. Interface claire sur fond blanc, un seul accent chaud, l'orange n'apparaît que là où il compte. J'écarte les codes esports, fonds noirs et néons, parce que l'outil doit inspirer confiance au gérant de salle qui l'utilise en plein jour sur son comptoir.
+J'ai commencé au crayon, en zonant l'accueil en desktop et en mobile. Puis j'ai détaillé le desktop en wireframe, parce que c'est l'écran principal du gérant de salle. Le mobile, je l'ai décliné plus tard, au moment des maquettes finales.
 
-## 5. Du zoning à l'écran, 1 min
+## 7. Charte graphique, 45 s
 
-J'ai commencé au crayon : zoning, puis wireframes desktop et mobile. Deux maquettes Figma, l'accueil et l'inscription, pour fixer la charte. Puis je suis passé sur Claude Design pour produire les douze écrans, et je veux expliquer comment. Je lui ai donné mes deux maquettes Figma comme référence de disposition. J'ai écrit DESIGN.md en amont, palette, tokens, typographie, règles RGAA, comme un contrat qu'il devait respecter. J'ai décrit le contexte métier et l'intention de chaque page, états compris. Ensuite j'ai audité le résultat contre mon modèle de données et corrigé ce qui ne collait pas : le compteur d'équipe qui confondait effectif et inscrits, le centre inactif qui accueillait le tournoi, le capitaine qui pouvait choisir n'importe quel centre. J'ai spécifié, l'outil a exécuté, j'ai audité.
+Deux univers. La ligue communique en bleu et blanc, et son site ne gère que les tournois. Leo Training prend l'orange : ça sépare clairement les deux outils, et les deux couleurs sont complémentaires. Le navy du logo garde le lien. Une interface claire sur fond blanc, un seul accent chaud, l'orange seulement là où il compte, la jauge de places et le bouton principal. J'ai écarté les codes esports, fonds noirs et néons, parce que l'outil doit inspirer confiance à un gérant de salle qui l'utilise en plein jour sur son comptoir.
 
-## 6. Démo, 45 s
+## 8. Maquette Figma, 20 s
 
-L'accueil en desktop et en mobile. La vitrine du tournoi à gauche, les créneaux à droite avec la jauge de places. La bordure orange sur la troisième carte signale que ce centre accueille le tournoi en vitrine. En mobile, la vitrine devient un bandeau repliable, la liste passe en premier, la navigation descend en bas au niveau du pouce.
+Deux écrans maquettés dans Figma, l'accueil et l'inscription. C'est là que la charte s'est fixée : les cartes, la jauge, le placement de la vitrine tournoi.
 
-## 7. Ce qui reste, 30 s
+## 9. Passage sur Claude Design, 1 min
 
-Fait : PRD, specs Gherkin, architecture, MERISE avec DDL, charte, design system, douze écrans. Reste : la recherche JTBD avec trois sources réelles, l'export des diagrammes, le pitch de dix minutes et les retours des pairs. Deux questions pour vous : Claude Design à la place de Figma, est-ce recevable ? Et le périmètre en trois niveaux, est-ce la bonne lecture d'une seule fonctionnalité forte ?
+Pour produire les douze écrans, en desktop et en mobile, je suis passé sur Claude Design, et je veux dire comment. Je lui ai donné mes deux maquettes Figma comme référence de disposition. J'ai écrit ma charte dans un fichier DESIGN.md, palette, typographie, règles d'accessibilité, comme un contrat à respecter. J'ai décrit page par page ce que je voulais, avec les états. Ensuite j'ai relu le résultat contre mon modèle de données et j'ai corrigé ce qui ne collait pas, par exemple un compteur qui confondait l'effectif d'une équipe et ses inscrits. J'ai spécifié, l'outil a exécuté, j'ai vérifié.
+
+En mobile, la vitrine devient un bandeau repliable, la liste passe en premier et la navigation descend en bas, au niveau du pouce.
+
+## 10. Où j'en suis, 30 s
+
+Fait : le PRD, les spécifications, l'architecture, le modèle de données, la charte et les écrans. Reste : la recherche JTBD avec trois sources, l'export du diagramme de cas d'utilisation, le pitch de dix minutes et les retours des pairs.
+
+Deux questions pour vous. Le prototype est fait avec Claude Design à partir de mes maquettes Figma, est-ce recevable au regard de la grille ? Et j'ai découpé le périmètre en trois niveaux, la fonctionnalité principale, le socle indispensable et un lot V1.1 : est-ce la bonne lecture de « une seule fonctionnalité forte » ?
