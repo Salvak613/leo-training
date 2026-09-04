@@ -1,6 +1,6 @@
 # Moodboard, Leo Training
 
-> Planche visuelle à assembler dans `diagrams/moodboard.png`. Ce document en fixe l'intention et sert de brief pour la sélection des visuels.
+> Planche visuelle : `diagrams/moodboard.png`, générée à partir des tokens réels du design system (palette, contrastes mesurés, typographie, icônes, composants). Ce document en fixe l'intention.
 
 ## Intention
 
@@ -28,9 +28,9 @@ Sur la planche, les deux univers doivent apparaître côte à côte : un aplat b
 
 **Iconographie linéaire.** Traits fins, angles arrondis, jamais de pictogramme plein ni de couleur dans l'icône. Un vocabulaire stable : calendrier pour les créneaux, bâtiment pour les centres, bouclier pour les équipes, trophée pour le tournoi.
 
-## Références à réunir sur la planche
+## Ce que la planche réunit
 
-1. Photographie d'arène de laser-tag, cloisons et néons, pour l'énergie et la source de l'orange.
+1. Les deux univers côte à côte, bleu et blanc de la ligue contre orange de Leo Training. Une photographie d'arène pourra compléter la planche si une image libre de droits est disponible.
 2. Tableau de bord SaaS clair et dense, pour la mise en page et la hiérarchie.
 3. Nuancier de la palette, orange et navy sur neutres froids.
 4. Échantillon typographique Inter, du 12 px au 30 px.
