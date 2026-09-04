@@ -94,23 +94,20 @@
 <section class="slide">
   <div class="bar"></div>
   <div class="kicker">Étape C</div>
-  <h2>Modèle de données</h2>
-  <div class="cols" style="grid-template-columns: 1.25fr 1fr;">
-    <div class="fig frame" style="padding:24px; height:800px;"><img src="../diagrams/mcd.png" alt="Modèle conceptuel de données"></div>
-    <div class="list" style="gap:28px;">
-      <div class="rule">
-        <div class="t">La capacité se compte sur les seules inscriptions confirmées</div>
-        <div class="d">Dans une transaction avec verrou sur le créneau. Se désinscrire change un statut, ne supprime rien.</div>
-      </div>
-      <div class="rule">
-        <div class="t">L'équipe d'un inscrit est dérivée, jamais stockée</div>
-        <div class="d">Elle vient de son appartenance active. Aucune colonne en plus, aucune divergence entre les écrans.</div>
-      </div>
-      <div class="rule">
-        <div class="t">MCD, MLD, MPD avec le DDL PostgreSQL complet</div>
-        <div class="d">Seize tables, onze types énumérés, index uniques partiels pour le capitaine, l'équipe active et la vitrine.</div>
-      </div>
+  <h2 style="margin-bottom:28px;">Modèle de données, du MCD au MPD</h2>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+    <div>
+      <div class="fig frame" style="padding:14px; height:520px;"><img src="../diagrams/mcd.png" alt="Modèle conceptuel de données"></div>
+      <div style="font: 600 22px/1.3 var(--font); color: var(--title); margin-top: 14px;">MCD <span style="font-weight:400; color: var(--meta);">Merise, entités, associations et contraintes d'intégrité</span></div>
     </div>
+    <div>
+      <div class="fig frame" style="padding:14px; height:520px;"><img src="../diagrams/mpd.png" alt="Modèle physique de données"></div>
+      <div style="font: 600 22px/1.3 var(--font); color: var(--title); margin-top: 14px;">MPD <span style="font-weight:400; color: var(--meta);">PostgreSQL, seize tables, onze types énumérés, DDL complet dans le dépôt</span></div>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 22px;">
+    <div class="rule" style="padding: 20px 26px;"><div class="t" style="font-size:23px;">La capacité se compte sur les seules inscriptions confirmées</div><div class="d" style="font-size:20px;">Transaction avec verrou sur le créneau. Se désinscrire change un statut, ne supprime rien.</div></div>
+    <div class="rule" style="padding: 20px 26px;"><div class="t" style="font-size:23px;">L'équipe d'un inscrit est dérivée, jamais stockée</div><div class="d" style="font-size:20px;">Elle vient de l'appartenance active. Aucune colonne en plus, aucune divergence entre les écrans.</div></div>
   </div>
   <div class="brand"><img src="../Logo.png" alt=""> Leo Training</div>
   <div class="num">3 / 7</div>

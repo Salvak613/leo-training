@@ -14,7 +14,7 @@ Multicouche classique, pas hexagonal, trop lourd pour une V1. Front et back déc
 
 ## 3. Données, 1 min 15
 
-Je ne lis pas le MCD. Un joueur s'affilie à des centres, une équipe représente un centre, un centre accueille des créneaux, un joueur s'inscrit à des créneaux. Deux règles font la valeur du modèle. La capacité est comptée sur les seules inscriptions confirmées, dans une transaction avec verrou sur le créneau : deux inscriptions simultanées ne peuvent pas dépasser la capacité. L'équipe d'un inscrit n'est pas stockée, elle est dérivée de son appartenance active, donc aucune divergence possible entre les écrans. MLD et MPD sont dans le dépôt, avec le DDL complet.
+Je ne lis pas le MCD. Un joueur s'affilie à des centres, une équipe représente un centre, un centre accueille des créneaux, un joueur s'inscrit à des créneaux. Deux règles font la valeur du modèle. La capacité est comptée sur les seules inscriptions confirmées, dans une transaction avec verrou sur le créneau : deux inscriptions simultanées ne peuvent pas dépasser la capacité. L'équipe d'un inscrit n'est pas stockée, elle est dérivée de son appartenance active, donc aucune divergence possible entre les écrans. À droite le MPD : seize tables PostgreSQL, les clés étrangères en orange, les types énumérés pour les statuts. Le DDL complet est dans le dépôt.
 
 ## 4. Charte graphique, 45 s
 
