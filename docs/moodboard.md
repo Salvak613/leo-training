@@ -1,6 +1,6 @@
 # Moodboard, Leo Training
 
-> Planche visuelle : `diagrams/moodboard.png`, générée à partir des tokens réels du design system (palette, contrastes mesurés, typographie, icônes, composants). Ce document en fixe l'intention.
+> Planche visuelle : `diagrams/moodboard.png`. Deux univers, palette, typographie, icônes et intention. Le détail des tokens et des contrastes est dans `DESIGN.md`.
 
 ## Intention
 
