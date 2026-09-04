@@ -1,6 +1,6 @@
 # Moodboard, Leo Training
 
-> Planche visuelle : `diagrams/moodboard.png`. Deux univers, palette, typographie, icônes et intention. Le détail des tokens et des contrastes est dans `DESIGN.md`.
+> Planche visuelle : `diagrams/moodboard.png`. Deux univers, palette, typographie, icônes. L'intention se dit à l'oral, le détail des tokens et des contrastes est dans `DESIGN.md`.
 
 ## Intention
 
